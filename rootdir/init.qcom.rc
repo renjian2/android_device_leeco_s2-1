@@ -327,6 +327,14 @@ on property:persist.sys.ssr.enable_ramdumps=1
 on property:persist.sys.ssr.enable_ramdumps=0
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
 
+    # Sustained power and vr mode
+    chown system system /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
+    chmod 0660 /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
+    chown system system /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
+    chmod 0660 /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
+    chown system system /sys/class/devfreq/gpubw/min_freq
+    chmod 0660 /sys/class/devfreq/gpubw/min_freq
+
 on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
     # CPE fw_name used by sound trigger HAL
