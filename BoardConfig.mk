@@ -134,6 +134,7 @@ BACKLIGHT_PATH := "/sys/class/leds/lcd-backlight/brightness"
 BLINK_PATH := "/sys/class/leds/red/blink"
 WITH_LINEAGE_CHARGER := false
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.s2
+WITH_CUSTOM_CHARGER := false
 
 # CNE
 BOARD_USES_QCNE := true
