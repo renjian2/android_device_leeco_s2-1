@@ -1,7 +1,6 @@
 /*
    Copyright (c) 2013-2016, The Linux Foundation. All rights reserved.
    Copyright (c) 2017, The LineageOS Project
-
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
    met:
@@ -14,7 +13,6 @@
     * Neither the name of The Linux Foundation nor the names of its
       contributors may be used to endorse or promote products derived
       from this software without specific prior written permission.
-
    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
@@ -89,39 +87,39 @@ void init_alarm_boot_properties()
          * 8 -> KPDPWR_N pin toggled (power key pressed)
          */
         if (buf[0] == '0') {
-            property_set("ro.boot.bootreason", "invalid");
-            property_set("ro.alarm_boot", "false");
+            android::init::property_set("ro.boot.bootreason", "invalid");
+            android::init::property_set("ro.alarm_boot", "false");
         }
         else if (buf[0] == '1') {
-            property_set("ro.boot.bootreason", "hard_reset");
-            property_set("ro.alarm_boot", "false");
+            android::init::property_set("ro.boot.bootreason", "hard_reset");
+            android::init::property_set("ro.alarm_boot", "false");
         }
         else if (buf[0] == '2') {
-            property_set("ro.boot.bootreason", "smpl");
-            property_set("ro.alarm_boot", "false");
+            android::init::property_set("ro.boot.bootreason", "smpl");
+            android::init::property_set("ro.alarm_boot", "false");
         }
         else if (buf[0] == '3'){
-            property_set("ro.alarm_boot", "true");
+            android::init::property_set("ro.alarm_boot", "true");
         }
         else if (buf[0] == '4') {
-            property_set("ro.boot.bootreason", "dc_chg");
-            property_set("ro.alarm_boot", "false");
+            android::init::property_set("ro.boot.bootreason", "dc_chg");
+            android::init::property_set("ro.alarm_boot", "false");
         }
         else if (buf[0] == '5') {
-            property_set("ro.boot.bootreason", "usb_chg");
-            property_set("ro.alarm_boot", "false");
+            android::init::property_set("ro.boot.bootreason", "usb_chg");
+            android::init::property_set("ro.alarm_boot", "false");
         }
         else if (buf[0] == '6') {
-            property_set("ro.boot.bootreason", "pon1");
-            property_set("ro.alarm_boot", "false");
+            android::init::property_set("ro.boot.bootreason", "pon1");
+            android::init::property_set("ro.alarm_boot", "false");
         }
         else if (buf[0] == '7') {
-            property_set("ro.boot.bootreason", "cblpwr");
-            property_set("ro.alarm_boot", "false");
+            android::init::property_set("ro.boot.bootreason", "cblpwr");
+            android::init::property_set("ro.alarm_boot", "false");
         }
         else if (buf[0] == '8') {
-            property_set("ro.boot.bootreason", "kpdpwr");
-            property_set("ro.alarm_boot", "false");
+            android::init::property_set("ro.boot.bootreason", "kpdpwr");
+            android::init::property_set("ro.alarm_boot", "false");
         }
     }
 }
@@ -131,7 +129,7 @@ void vendor_load_properties() {
     int isX520 = 0, isX522 = 0, isX526 = 0, isX527 = 0;
 
     // Default props
-    property_set("ro.thermanager.config", "/system/etc/thermanager.xml");
+    android::init::property_set("ro.thermanager.config", "/system/etc/thermanager.xml");
 
     if (read_file2(DEVINFO_FILE, device, sizeof(device)))
     {
@@ -156,28 +154,28 @@ void vendor_load_properties() {
     if (isX520)
     {
         // This is X520
-        property_set("ro.product.model", "X520");
+        android::init::property_set("ro.product.model", "X520");
     }
     else if (isX522)
     {
         // This is X522
-        property_set("ro.product.model", "X522");
+        android::init::property_set("ro.product.model", "X522");
     }
     else if (isX526)
     {
         // This is X526
-        property_set("ro.product.model", "X526");
-        property_set("ro.thermanager.config", "/system/etc/thermanager_X526.xml");
+        android::init::property_set("ro.product.model", "X526");
+
     }
     else if (isX527)
     {
         // This is X527
-        property_set("ro.product.model", "X527");
+        android::init::property_set("ro.product.model", "X527");
     }
     else
     {
         // Unknown variant
-        property_set("ro.product.model", "X52X");
+        android::init::property_set("ro.product.model", "X52X");
     }
 
     init_alarm_boot_properties();
