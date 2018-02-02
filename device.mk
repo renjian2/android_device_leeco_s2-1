@@ -299,6 +299,7 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wificond \
     wifilogd \
+    dhcpcd.conf \
     wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
